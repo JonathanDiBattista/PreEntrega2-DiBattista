@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 function NavBar() {
   const navigate = useNavigate();
 
@@ -9,6 +10,7 @@ function NavBar() {
       navigate(`/category/${selectedOption}`);
     }
   };
+
   return (
     <div>
       <nav className="m-auto h-20 bg-neutral-400 flex">
@@ -23,8 +25,9 @@ function NavBar() {
             <select
               className="bg-neutral-900 p-2 rounded-md text-white"
               onChange={handleSelectChange}
+              defaultValue=""
             >
-              <option className="text-white" disabled selected>
+              <option className="text-white" value="" disabled>
                 Category
               </option>
               <option className="text-white" value="Avengers">

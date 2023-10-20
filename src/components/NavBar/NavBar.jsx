@@ -20,7 +20,6 @@ function NavBar() {
               MOVIEZ
             </Link>
           </li>
-
           <li>
             <select
               className="bg-neutral-900 p-2 rounded-md text-white"
@@ -37,9 +36,14 @@ function NavBar() {
                 Batman
               </option>
               <option className="text-white" value="Matrix">
-                Matrix
+                Matrix  
               </option>
             </select>
+          </li>
+          <li>
+            <Link className="bg-neutral-900 p-2 rounded-md text-white no-underline" to="/Cart">
+            CART
+            </Link>
           </li>
         </ul>
       </nav>

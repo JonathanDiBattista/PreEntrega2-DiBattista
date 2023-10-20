@@ -1,25 +1,26 @@
 import React from "react";
 import MovieList from "./MovieList";
 import { useState, useEffect } from "react";
+import {collection, getDocs, getFirestore} from "firebase/firestore"
 
 const MovieListCont = () => {
   const [movies, setMovies] = useState([]);
+  useEffect (()=>{
+    fetchMovies()
+  },[])
 
-  useEffect(() => {
-    getMovies();
-  }, []);
-
-  const getMovies = async () => {
+  const fetchMovies = async () => {
+    const db = getFirestore();
+    const moviesCollection = collection(db, "peliculas");
     try {
-      const response = await fetch(
-        "https://www.omdbapi.com/?s=movie&apikey=bd21e663"
-      );
-      const data = await response.json();
-      setMovies(data.Search);
+      const snapshot = await getDocs(moviesCollection);
+      const allData = snapshot.docs.map((document) => ({ id: document.id, ...document.data() }));
+      setMovies(allData);
     } catch (error) {
-      console.log(error);
+      // Maneja el error aquí
+      console.error("Error al obtener datos:", error);
     }
   };
-  return <MovieList movies={movies} />;
-};
+        return <MovieList movies={movies} />;
+  };
 export default MovieListCont;

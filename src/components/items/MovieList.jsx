@@ -8,8 +8,8 @@ export const MovieList = ({ movies }) => {
       {movies.length > 0 &&
         movies.map((movie, i) => (
           <div className="flex flex-col justify-between mt-5" key={i}>
-            <h1 className="text-xl">{movie.Title}</h1>
-            <img onClick={()=>{navigate(`/movies/${movie.imdbID}`)}} className="w-56 h-72 cursor-pointer rounded-md" src={movie.Poster} alt={movie.Title} />
+            <h1 className="text-xl">{movie.name}</h1>
+            <img onClick={()=>{navigate(`/movies/${movie.id}`)}} className="w-56 h-72 cursor-pointer rounded-md" src={movie.image} alt={movie.name} />
           </div>
         ))}
     </div>

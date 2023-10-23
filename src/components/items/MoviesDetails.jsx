@@ -12,7 +12,6 @@ function MovieDetails() {
 };
   const { id } = useParams();
   const [movie, setMovie] = useState();
-
   useEffect(()=>{
     fetchMovie()
   },[id])

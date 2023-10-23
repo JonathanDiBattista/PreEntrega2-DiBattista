@@ -1,12 +1,75 @@
 import React, { useContext, useState } from 'react'
 import CartContext from '../../context/cartContext/CartContext'
 import { addDoc, collection, getFirestore } from "firebase/firestore"
-import { useNavigate } from 'react-router-dom'
+import FormComponent from '../form/FormComponent'
 
 const CartDetail = () => {
     const {cart, removeItem, clear, addOneItem} = useContext(CartContext)
+
+    const [orderId, setOrderId] = useState("")
+
+    const [buyer, setBuyer] = useState({
+        name: "",
+        email: ""
+    })
+
+    const [errors, setErrors] = useState({
+        name: "",
+        email: ""
+    })
+    
+   /*  const navigate = useNavigate() */
+    const addToCart = async () => {
+        let total = 0;
+    for (const item of cart) {
+      total += item.movie.price * item.q;
+    }
+        const purchase = {
+            buyer,
+            items: cart,
+            date: new Date(),
+            total,
+        };
+        try {
+                const db = getFirestore();
+                const orderCollection = collection(db, "orders");
+                const docRef = await addDoc(orderCollection, purchase);
+                navigate(`/checkout/${docRef.id}`);
+        } catch (err) {
+            console.log(err);
+        }
+        clear()
+        };
+    const handleChange = (e) => {
+        const { target } = e;
+        setBuyer({
+            ...buyer,
+            [target.name] : target.value
+        })
+    }
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const errorLocal = {};
+        if(!buyer.name) {
+            errorLocal.name = "El nombre es obligatorio"
+        };
+        if(!buyer.email) {
+            errorLocal.email = "El email es obligatorio"
+        };
+        if (Object.keys(errorLocal).length === 0) {
+            addToCart();
+        } else {
+            setErrors(errorLocal);
+        }
+    }
     return (
         <div>
+            <FormComponent 
+                formData={buyer}
+                inputChange={handleChange}
+                onSumbit={onSubmit}
+            >
+            </FormComponent>
             Cart {
                 cart.map (el=>(
                     <div key={el.movie.id}>
@@ -17,10 +80,6 @@ const CartDetail = () => {
                         <button onClick={()=>clear()}>Eliminar Todo</button>
                     </div>
                 ))
-            }
-            {
-                cart.length > 0 && 
-                <button>Create Order</button>
             }
         </div>
     )

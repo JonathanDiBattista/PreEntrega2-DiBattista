@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import User from "./pages/User"
+import Checkout from "./pages/Checkout";
 import MovieDetails from "./components/items/MoviesDetails";
 import CartContextProvider from './context/cartContext/CartContextProvider'
 import UserContextProvider from './context/userContext/UserContextProvider'
@@ -18,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies/:id" element={<MovieDetails />} />
-            <Route path='/user' element={<User/>} />
+            <Route path='/checkout' element={<Checkout/>} />
             <Route path='/cart' element={<Cart />} />
           </Routes>
         </div>

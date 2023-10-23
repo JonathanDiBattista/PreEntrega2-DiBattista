@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+/* import React, { useState, useEffect, useContext } from 'react'
 import CartContext from '../../context/cartContext/CartContext';
 import { getOneDocument } from '../../services/firebaseService';
 import MovieCard from './MovieCard';
@@ -25,4 +25,4 @@ const MovieDetail = ({ id }) => {
     )
 }
 
-export default MovieDetail
+export default MovieDetail */

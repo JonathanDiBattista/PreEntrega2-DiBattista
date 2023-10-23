@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 
     const FormComponent = ({ formData, inputChange, onSumbit }) => {
     return (
@@ -25,4 +25,4 @@ import React from 'react'
     )
 }
 
-export default FormComponent
+export default FormComponent */

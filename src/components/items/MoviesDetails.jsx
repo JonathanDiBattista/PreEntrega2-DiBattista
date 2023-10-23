@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {doc, getDoc, getFirestore} from "firebase/firestore"
 import MovieCard from "./MovieCard";
+import CartContext from "../../context/cartContext/CartContext";
 
 function MovieDetails() {
+  const { addItem } = useContext(CartContext)
+  const onAdd = (q) => {
+    addItem(movie, q)
+};
   const { id } = useParams();
   const [movie, setMovie] = useState();
+
   useEffect(()=>{
     fetchMovie()
   },[id])
@@ -28,7 +34,7 @@ function MovieDetails() {
       console.log(error);
     }
   };
-  return <MovieCard movie={movie} />;
+  return <MovieCard movie={movie} onAdd={onAdd} />;
   };
 
 

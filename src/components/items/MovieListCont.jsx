@@ -17,8 +17,7 @@ const MovieListCont = () => {
       const allData = snapshot.docs.map((document) => ({ id: document.id, ...document.data() }));
       setMovies(allData);
     } catch (error) {
-      // Maneja el error aquí
-      console.error("Error al obtener datos:", error);
+      console.log(error);
     }
   };
         return <MovieList movies={movies} />;

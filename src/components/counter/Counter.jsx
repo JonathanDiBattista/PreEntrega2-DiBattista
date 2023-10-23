@@ -15,7 +15,7 @@ return (
       <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={increment}>Sumar</button>
       <span  className="bg-neutral-900 p-2 rounded-md text-white no-underline">{ count }</span>
       <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={decrement}>Restar</button>
-      <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={() => onAdd(count) }>{text}</button>
+      <button className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={() => onAdd(count)}>{text}</button>
   </div>
 )
 }

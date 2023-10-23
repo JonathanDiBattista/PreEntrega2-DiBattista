@@ -17,7 +17,7 @@ const UserContextProvider = ({ children }) => {
     const value = {
         user,
         editUser
-    }
+    } 
     return (
     <UserContext.Provider value={value}>
             { children }

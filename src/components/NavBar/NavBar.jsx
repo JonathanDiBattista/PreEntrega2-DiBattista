@@ -10,7 +10,8 @@ function NavBar() {
       navigate("/");
     } else if (selectedOption === "Cart") {
       navigate("/cart"); 
-    }
+    } else if (selectedOption === "User") {
+      navigate("/user");}
   };
 
   return (
@@ -33,6 +34,9 @@ function NavBar() {
               </option>
               <option className="text-white" value="Cart">
                 Cart
+              </option>
+              <option className="text-white" value="User">
+                User
               </option>
             </select>
           </li>

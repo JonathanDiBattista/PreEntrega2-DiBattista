@@ -12,7 +12,7 @@ const Counter = ({onAdd, text = "Agregar al carrito", q = 0}) => {
   }
 return (
   <div>
-      <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={increment}>Agregar</button>
+      <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={increment}>Sumar</button>
       <span  className="bg-neutral-900 p-2 rounded-md text-white no-underline">{ count }</span>
       <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={decrement}>Restar</button>
       <button  className="bg-neutral-900 p-2 rounded-md text-white no-underline" onClick={() => onAdd(count) }>{text}</button>

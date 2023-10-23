@@ -6,8 +6,10 @@ function NavBar() {
 
   const handleSelectChange = (event) => {
     const selectedOption = event.target.value;
-    if (selectedOption) {
-      navigate(`/category/${selectedOption}`);
+    if (selectedOption === "Home") {
+      navigate("/");
+    } else if (selectedOption === "Cart") {
+      navigate("/cart"); 
     }
   };
 
@@ -26,24 +28,13 @@ function NavBar() {
               onChange={handleSelectChange}
               defaultValue=""
             >
-              <option className="text-white" value="" disabled>
-                Category
+              <option className="text-white" value="Home">
+                Home
               </option>
-              <option className="text-white" value="Avengers">
-                Avengers
-              </option>
-              <option className="text-white" value="Batman">
-                Batman
-              </option>
-              <option className="text-white" value="Matrix">
-                Matrix  
+              <option className="text-white" value="Cart">
+                Cart
               </option>
             </select>
-          </li>
-          <li>
-            <Link className="bg-neutral-900 p-2 rounded-md text-white no-underline" to="/Cart">
-            CART
-            </Link>
           </li>
         </ul>
       </nav>

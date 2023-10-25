@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/movies/:id" element={<MovieDetails />} />
             <Route path='/checkout' element={<Checkout/>} />
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<Cart/>} />
           </Routes>
         </div>
         </UserContextProvider>

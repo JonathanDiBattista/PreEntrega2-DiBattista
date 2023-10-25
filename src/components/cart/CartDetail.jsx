@@ -6,6 +6,8 @@ import FormComponent from '../form/FormComponent'
 const CartDetail = () => {
     const {cart, removeItem, clear, addOneItem} = useContext(CartContext)
 
+    const [alertMessage, setAlertMessage] = useState("");
+
     const [orderId, setOrderId] = useState("")
 
     const [buyer, setBuyer] = useState({
@@ -34,11 +36,11 @@ const CartDetail = () => {
                 const db = getFirestore();
                 const orderCollection = collection(db, "orders");
                 const docRef = await addDoc(orderCollection, purchase);
-                navigate(`/checkout/${docRef.id}`);
+                setAlertMessage(`Compra exitosa. Orden: ${docRef.id}, Comprador: ${buyer.name}`);
+                clear();
         } catch (err) {
             console.log(err);
         }
-        clear()
         };
     const handleChange = (e) => {
         const { target } = e;
@@ -70,6 +72,9 @@ const CartDetail = () => {
                 onSumbit={onSubmit}
             >
             </FormComponent>
+            {alertMessage && (
+            <div className="alert alert-success">{alertMessage}</div>
+        )}
             Cart {
                 cart.map (el=>(
                     <div key={el.movie.id}>

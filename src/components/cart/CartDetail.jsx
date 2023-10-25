@@ -20,7 +20,6 @@ const CartDetail = () => {
         email: ""
     })
     
-   /*  const navigate = useNavigate() */
     const addToCart = async () => {
         let total = 0;
     for (const item of cart) {

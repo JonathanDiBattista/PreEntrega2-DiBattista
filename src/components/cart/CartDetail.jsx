@@ -76,12 +76,16 @@ const CartDetail = () => {
         )}
             Cart {
                 cart.map (el=>(
-                    <div key={el.movie.id}>
-                        <p>Produto{el.movie.name}</p>
-                        <p>Cantidad {el.q}</p>
-                        <button onClick={() => addOneItem(el.movie.id)}>Agregar uno</button>
-                        <button onClick={()=>removeItem(el.movie.id)}>Eliminar Uno</button>
-                        <button onClick={()=>clear()}>Eliminar Todo</button>
+                    <div className='flex bg-zinc-200 gap-4 justify-between items-center w-70 mt-5' key={el.movie.id}>
+                        <div className='flex gap-15 items-center'>
+                        <h2>Produto: {el.movie.name}</h2>
+                        <h2>Cantidad: {el.q}</h2>
+                        </div>
+                        <div className='flex gap-3 items-center'>
+                        <button className="bg-neutral-900 p-2 rounded-md text-white no-underline"onClick={() => addOneItem(el.movie.id)}>Agregar uno</button>
+                        <button className="bg-neutral-900 p-2 rounded-md text-white no-underline"onClick={()=>removeItem(el.movie.id)}>Eliminar Uno</button>
+                        <button className="bg-neutral-900 p-2 rounded-md text-white no-underline"onClick={()=>clear()}>Eliminar Todo</button>
+                        </div>
                     </div>
                 ))
             }

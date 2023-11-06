@@ -35,9 +35,6 @@ function NavBar() {
               <option className="text-white" value="Cart">
                 Cart
               </option>
-              <option className="text-white" value="ChekOut">
-                CheckOut
-              </option>
             </select>
           </li>
         </ul>
